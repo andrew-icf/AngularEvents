@@ -316,3 +316,5 @@ const EVENTS = [
         voters: ['bradgreen', 'igorminar', 'johnpapa']
       }
     ]
+  }
+]
