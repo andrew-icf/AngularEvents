@@ -4,6 +4,7 @@
   <div *ngFor="let event of events"
        class="well hoverwell thumbnail col-md-10"
        (click)="handleThumbnailClick(event.name)"
+       [routerLink]="['/events', event.id]"
        >
     <h2>{{event?.name}}</h2>
     <div>Date: {{event?.date}}</div>
