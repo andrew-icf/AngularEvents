@@ -12,6 +12,7 @@ import { Error404Component } from './errors/404.component';
 import { ToastrService } from './common/toastr.service';
 import { EventListService } from './events-list/shared/events-list.service';
 import { EventRouteAcitivator } from './event-details/event-route-activator.service';
+
 import { appRoutes } from './common/routes';
 
 @NgModule({
