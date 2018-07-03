@@ -21,6 +21,7 @@ import { appRoutes } from './common/routes';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
