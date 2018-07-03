@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EventListService } from './shared/events-list.service';
 import { ToastrService } from '../common/toastr.service';
 
@@ -10,10 +11,13 @@ import { ToastrService } from '../common/toastr.service';
 export class EventsListComponent implements OnInit {
   events: any[]
   constructor(private eventListService: EventListService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.events = this.eventListService.getEvents();
+    // this.eventListService.getEvents().subscribe(events => {this.events = events}); we are now doing this on our resolver
+    this.events = this.route.snapshot.data['events']; // this events matches the key of the object we set in the route obj
+
   }
 
   getStartTimeClass() {
