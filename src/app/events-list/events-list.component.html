@@ -2,26 +2,26 @@
   <h1>Upcoming Angular Events</h1>
   <hr />
   <div *ngFor="let event of events"
-       class="well hoverwell thumbnail col-md-10"
+       class="well hoverwell thumbnail col-md-10 col-md-offset-1"
        (click)="handleThumbnailClick(event.name)"
        [routerLink]="['/events', event.id]"
        >
-    <h2>{{event?.name}}</h2>
-    <div>Date: {{event?.date}}</div>
+    <h2>{{ event?.name | uppercase }}</h2>
+    <div>Date: {{ event?.date | date:'shortDate' }}</div>
     <div [ngClass]="getStartTimeClass()" [ngSwitch]='event?.time'>
-      Time: {{event?.time}}
+      Time: {{ event?.time }}
       <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
       <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
       <span *ngSwitchDefault>(On Time)</span>
     </div>
-    <div>Price: {{event?.price}}</div>
+    <div>Price: {{event?.price | currency:'USD' }}</div>
     <div *ngIf="event?.location">
-      <span>Location: {{event?.location?.address}}</span>
+      <span>Location: {{ event?.location?.address }}</span>
       <span>&nbsp;</span>
-      <span>{{event?.location?.city}}, {{event?.location?.country}}</span>
+      <span>{{ event?.location?.city }}, {{ event?.location?.country }}</span>
     </div>
     <div *ngIf="event?.onlineUrl"> <!-- [hidden]="event?.onlineUrl" -->
-      Online URL: {{event?.onlineUrl }}
+      Online URL: {{ event?.onlineUrl }}
     </div>
   </div>
 </div>
