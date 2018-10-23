@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-declare let toastr:any; // still global but only to this service
+declare let toastr: any; // still global but only to this service
 
 @Injectable()
 export class ToastrService {

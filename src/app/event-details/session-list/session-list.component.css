@@ -1,0 +1,13 @@
+app-collapsible-well span {
+  font-size: 2.2rem;
+}
+app-collapsible-well p {
+  font-size: 2rem;
+}
+app-collapsible-well h6 {
+  font-size: 2.4rem;
+  color: #F97924;
+}
+app-collapsible-well {
+  text-align: left;
+}
