@@ -1,0 +1,13 @@
+label {
+  font-size: 22px;
+  float: left;
+}
+em {
+  float: right;
+  color: #E05C65;
+  padding-left: 10px;
+  font-size: 22px;
+}
+.error input {
+  background-color: #E3C3C5;
+}

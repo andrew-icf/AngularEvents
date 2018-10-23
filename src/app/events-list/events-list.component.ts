@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventListService } from './shared/events-list.service';
 import { ToastrService } from '../common/toastr.service';
+import { IEvent } from './shared/event.model';
 
 @Component({
   selector: 'app-events-list',
@@ -9,7 +10,7 @@ import { ToastrService } from '../common/toastr.service';
   styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
-  events: any[]
+  events: IEvent[];
   constructor(private eventListService: EventListService,
               private toastr: ToastrService,
               private route: ActivatedRoute) { }
@@ -21,16 +22,16 @@ export class EventsListComponent implements OnInit {
   }
 
   getStartTimeClass() {
-    let time = this.events.map((event) => {return event.time});
-    for (var i = 0; i <= time.length; i++) {
-      let eventTime = time[i];
+    const time = this.events.map((event) => event.time);
+    for (let i = 0; i <= time.length; i++) {
+      const eventTime = time[i];
       if (eventTime === '8:00 am') {
         return { green: eventTime, bold: eventTime};
       }
     }
   }
 
-  handleThumbnailClick(event){
+  handleThumbnailClick(event) {
     this.toastr.success(event);
   }
 }
