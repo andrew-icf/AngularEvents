@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { EventsListComponent, EventListService, EventListResolver } from './events-list/index';
+import { EventsListComponent, EventListService, EventListResolver, DurationPipe } from './events-list/index';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
@@ -29,6 +29,7 @@ import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    DurationPipe,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
