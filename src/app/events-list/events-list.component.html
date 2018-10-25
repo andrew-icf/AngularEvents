@@ -3,7 +3,6 @@
   <hr />
   <div *ngFor="let event of events"
        class="well hoverwell thumbnail col-md-10 col-md-offset-1"
-       (click)="handleThumbnailClick(event.name)"
        [routerLink]="['/events', event.id]"
        >
     <h2>{{ event?.name | uppercase }}</h2>

@@ -10,13 +10,15 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Error404Component } from './errors/404.component';
 
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { AuthService } from './user/auth.service';
 import { EventRouteAcitivator } from './event-details/event-route-activator.service';
 import { appRoutes } from './common/routes';
 import { CreateSessionComponent } from './event-details/create-session/create-session.component';
 import { SessionListComponent } from './event-details/session-list/session-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+
+declare let toastr: Toastr;
 
 @NgModule({
   declarations: [
@@ -40,8 +42,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-
   providers: [
     EventListService,
     AuthService,
-    ToastrService,
-    EventRouteAcitivator,
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: EventRouteAcitivator, useClass: EventRouteAcitivator}, // long hand version
     EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',
