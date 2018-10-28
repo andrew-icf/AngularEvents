@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventListService } from './shared/events-list.service';
-// import { ToastrService } from '../common/toastr.service';
 import { IEvent } from './shared/event.model';
 
 @Component({

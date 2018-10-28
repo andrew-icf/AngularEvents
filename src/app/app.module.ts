@@ -10,15 +10,15 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Error404Component } from './errors/404.component';
 
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent} from './common/index';
 import { AuthService } from './user/auth.service';
 import { EventRouteAcitivator } from './event-details/event-route-activator.service';
 import { appRoutes } from './common/routes';
 import { CreateSessionComponent } from './event-details/create-session/create-session.component';
 import { SessionListComponent } from './event-details/session-list/session-list.component';
-import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 
-declare let toastr: Toastr;
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ declare let toastr: Toastr;
     EventListService,
     AuthService,
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     { provide: EventRouteAcitivator, useClass: EventRouteAcitivator}, // long hand version
     EventListResolver,
     {
