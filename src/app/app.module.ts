@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import { EventsListComponent, EventListService, EventListResolver, DurationPipe } from './events-list/index';
+import { EventsListComponent, EventListService, EventListResolver, DurationPipe, EventResolver } from './events-list/index';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
@@ -12,7 +13,6 @@ import { Error404Component } from './errors/404.component';
 
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent} from './common/index';
 import { AuthService } from './user/auth.service';
-import { EventRouteAcitivator } from './event-details/event-route-activator.service';
 import { appRoutes } from './common/routes';
 import { CreateSessionComponent } from './event-details/create-session/create-session.component';
 import { SessionListComponent } from './event-details/session-list/session-list.component';
@@ -37,14 +37,15 @@ const jQuery = window['$'];
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     EventListService,
     AuthService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    { provide: EventRouteAcitivator, useClass: EventRouteAcitivator}, // long hand version
+    EventResolver,
     EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',

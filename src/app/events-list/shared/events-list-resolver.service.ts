@@ -6,10 +6,7 @@ import { EventListService } from './events-list.service';
 export class EventListResolver implements Resolve<any> {
   constructor(private eventListService: EventListService) {}
 
-  resolve() {
-    // using map here instead of observable because this is in a resolver we need to actually
-    // return the observable to Angular so that Angular can watch it and see when it finishes.
-    // subscribe() returns a subscription not an observable
-     return this.eventListService.getEvents().map(events => events );
+  resolve() { // resolve automatically subscribes, normally you would need to getEvents.subscribe()
+     return this.eventListService.getEvents();
   }
 }
